@@ -1,0 +1,1 @@
+# Skladac-panoramat
