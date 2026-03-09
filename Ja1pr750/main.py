@@ -1,0 +1,60 @@
+from Ja1pr750 import Ja1pr750
+import secrets
+
+def _mix_szn(szn):
+    pocet = len(szn)
+    for i in range(pocet):
+        a = secrets.choice(szn)
+        szn.remove(a)
+        szn.insert(secrets.randbelow(len(szn)), a)
+    print(len(szn))
+abeceda = ""
+for i in range(256):
+    abeceda = abeceda + chr(i)  # also you can mess with this, map#2 - full ascii in random order
+supress = "abcdefghijklmnop"  # key4, it could be different 16 characters
+
+# print("____GENEROVĂNĂŤ MAP_____")
+# abeceda = (mix_szn(list(abeceda)))
+
+print(r"""
+       █████           ████                                 ██████████ ██████████    █████             Patch notes:     
+      ░░███           ░░███                                ░███░░░░███░███░░░░░░█  ███░░░███                       V.1 - Linear version
+       ░███   ██████   ░███  ████████  ████████            ░░░    ███ ░███     ░  ███   ░░███                      V.2 - XOR version, Avalanche version
+       ░███  ░░░░░███  ░███ ░░███░░███░░███░░███ ██████████      ███  ░█████████ ░███    ░███                      V.3 - Swapping version
+       ░███   ███████  ░███  ░███ ░███ ░███ ░░░ ░░░░░░░░░░      ███   ░░░░░░░░███░███    ░███                      V.4 - Swapping & rotating version
+ ███   ░███  ███░░███  ░███  ░███ ░███ ░███                    ███     ███   ░███░░███   ███                       V.5 - Utf-8 version
+░░████████  ░░████████ █████ ░███████  █████                  ███     ░░████████  ░░░█████░                        V.6 - Salt version
+  ░░░░░░░░    ░░░░░░░░ ░░░░░  ░███░░░  ░░░░░                  ░░░       ░░░░░░░░     ░░░░░░                        V.7 - Extra avalanche version
+                              ░███                                                                                 
+                              █████                             V.7 - Extra avalanche version                                        
+                              ░░░░░                             Created by Ja1pr       
+▓▓▓▒▓▒▒▒░▒░░░▒░▒▒▒▓▒▓▓▓▒▓▒▒▒░▒░░░▒░▒▒▒▓▒▓▓▓▒▓▒▒▒░▒░░░▒░▒▒▒▓▒▓▓▓▒▓▒▒▒░▒░░░▒░▒▒▒▓▒▓▓▓▒▓▒▒▒░▒░░░▒░▒▒▒▓▒▓▓▓
+""")
+
+# print("____MAPY GENEROVĂNY_____")
+# print(abeceda)
+print("Please entry data")
+sifr = input("> ")
+key1 = input("Entry key one   > ")
+key2 = input("Entry key two   > ")
+key3 = input("Entry key three > ")
+co = int(input("Write 1 for deciphering, or 2 for ciphering > "))
+cipherdata = Ja1pr750(key1,key2,key3,abeceda,supress)
+print("▓▓▓▒▓▒▒▒░▒░░░▒░▒▒▒▓▒▓▓▓▒▓▒▒▒░▒░░░▒░▒▒▒▓▒▓▓▓▒▓▒▒▒░▒░░░▒░▒▒▒▓▒▓▓▓▒▓▒▒▒░▒░░░▒░▒▒▒▓▒▓▓▓▒▓▒▒▒░▒░░░▒░▒▒▒▓▒▓▓▓")
+print("")
+if co == 1:
+    print(cipherdata.odsifrovat(sifr))
+else:
+
+    si = (cipherdata.sifrovat(sifr))
+    print(si)
+    # Data stats, just for debugging
+    #azn = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    #for i in si:
+    #    azn[supress.index(i)] = azn[supress.index(i)] + 1
+    #for a in azn:
+    #    print(a * 100 / len(si))
+
+
+
+
